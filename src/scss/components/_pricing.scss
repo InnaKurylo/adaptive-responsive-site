@@ -1,0 +1,122 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/globals";
+%font{
+    font-weight: 400;
+    @include flex-center;
+    font-style: normal;
+}
+.pricing {
+    &__wrapper{
+        display: grid;
+        justify-items: center;
+        @extend.container;
+        @include mq('phone-wide'){
+            grid-template-columns: repeat(2,1fr);
+            gap: 1%;
+        }
+        @include mq ('tablet_s'){
+            grid-template-columns: repeat(4,1fr);
+            gap:0;
+        }
+        
+    }
+    font-family: $base-font;
+    color: $white-color;
+    background-color: $dark-lavender-color;
+    @include mq ('phone-wide'){
+        background-image: url("/dist/img/Pricing.png");
+        padding-bottom: 9rem;
+    }
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &__title{
+        font-size: rem(28);
+        line-height: rem(42);
+        font-weight: 700;
+        color:  $white-color;
+        text-align: center;
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        @include mq('phone-wide'){
+            font-size: rem(42);
+            line-height: rem(44);
+            padding-top: 5.6rem;
+            padding-bottom: 7rem;
+        };
+        @include mq('tablet_s'){
+            font-size: rem(48);
+            line-height: rem(50); 
+        }
+    };
+    &__tags{
+        transition: 0.3s;
+        cursor: pointer;
+        width: 94%;
+        max-width: 16.1rem;
+        height: 28rem;
+        background-color: rgba($color: $white-color, $alpha: 0.11);
+        margin-bottom: 1.6rem;
+        &--level{
+            height: 6rem;
+            background-color:rgba($color: $white-color, $alpha: 0.06);
+            text-transform: uppercase;
+            @extend%font;
+            font-size: rem(24);
+        }
+        &--price{
+            @extend%font;
+            font-size: rem(60);
+            padding-top: 1.8rem;
+            padding-bottom: 1.25rem;
+            span{
+                font-weight: 700;
+            }
+        }
+        &--time{
+            @extend%font;
+            font-size: rem(14);
+            line-height: rem(18);
+            text-transform: uppercase;
+            padding-bottom: 2.4rem;
+            
+        };
+        &--line{
+            border-bottom: 0.3rem solid $base-color;
+            width: 3.75rem;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+        &--conditions{
+            @extend%font;
+            font-size: rem(16);
+            line-height: rem(18);
+            width: 80%;
+            height: rem(50);
+            margin: 0 auto;
+            margin-bottom: 1.5rem;
+        };
+        &--btn{
+            @extend%font;
+            width: 70%;
+            margin: 0 auto;
+            border-radius: $default-border-radius;
+            background-color:rgba($color: $white-color, $alpha: 0.15);
+            padding: 1rem 2.4rem ;
+            text-transform: uppercase;
+            font-size: rem(15);
+            a{
+                color: $white-color;
+            }
+        };
+    };
+};
+.hover{
+    transform: scale(1.1); 
+    transition: 0.3s;
+    background-color: rgba($color: #463048, $alpha: 0.84);
+    .pricing__tags--level{
+        background-color: rgba($color: black, $alpha: 0.11);
+    }
+}

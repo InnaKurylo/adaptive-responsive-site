@@ -1,0 +1,218 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/globals";
+
+.header {
+  height: rem(800);
+  background-image: url("/dist/img/background_fon.png");
+  @include img-parallax;
+  position: relative;
+}
+//Navigation behaviour on various screens
+.menu {
+  padding: 3% 10px;
+  background: $black-color;
+  &__wrapper {
+    @include space-between;
+    &__logo {
+      @include flex-center;
+      gap: rem(17);
+      & span {
+        font-family: $secondary-font;
+        font-weight: 700;
+        font-size: $fs-medium;
+        line-height: $fs-base;
+        text-transform: uppercase;
+        color: $base-color;
+        @media (max-width: map-get($breakpoints, "tablet")) {
+          display: none;
+        }
+      }
+      &:hover {
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%)
+          saturate(7437%) hue-rotate(309deg) brightness(113%) contrast(106%);
+      }
+    }
+    &__logo__buy {
+      cursor: pointer;
+      font-family: $base-font;
+      padding: rem(11) rem(20);
+      border: none;
+      background: $base-color;
+      border-radius: $default-border-radius;
+      font-weight: 700;
+      font-size: $fs-secondary;
+      line-height: $fs-secondary;
+      color: $white-color;
+      &:hover {
+        @include button-hover;
+      }
+    }
+    &__burger {
+      border: none;
+      width: rem(26);
+      background-color: inherit;
+      cursor: pointer;
+      &.open {
+        .menu__wrapper__burger__span-container {
+          position: relative;
+          &__line {
+            &:first-child {
+              position: absolute;
+              width: rem(26);
+              transform: rotate(-45deg);
+            }
+            &:last-child {
+              position: absolute;
+              transform: rotate(45deg);
+            }
+            &:nth-child(2) {
+              display: none;
+            }
+          }
+        }
+      }
+      &__span-container {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: rem(6);
+        &__line {
+          display: block;
+          border-radius: rem(3);
+          height: rem(3);
+          width: rem(26);
+          background-color: $white-color;
+          &:first-child {
+            width: rem(15);
+          }
+        }
+      }
+      @include mq("tablet") {
+        display: none;
+      }
+    }
+  }
+}
+.header__navigation {
+  background-color: $light-black-color;
+  display: none;
+  &.absolute {
+    @media (max-width: map-get($breakpoints, "tablet")) {
+      display: block;
+      position: absolute;
+      top: 8.5%;
+      right: 1%;
+    }
+  }
+  &__menu__item {
+    white-space: nowrap;
+    padding: rem(30) rem(65) rem(20) rem(30);
+    border-bottom-color: $white-grey-color;
+    position: relative;
+    &:hover {
+      & a {
+        color: $base-color;
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          width: rem(8);
+          height: rem(53);
+          left: 0;
+          top: rem(15);
+          background: $base-color;
+        }
+      }
+    }
+  }
+  & a {
+    font-family: $base-font;
+    font-weight: 400;
+    font-size: $fs-large-m;
+    line-height: $fs-large-m;
+    color: $white-color;
+  }
+}
+.header__navigation {
+  @include mq("tablet") {
+    margin: rem(23);
+    display: block;
+    background-color: transparent;
+    &__menu {
+      @include flex-center;
+      flex-direction: row;
+      gap: 5%;
+      &__item {
+        padding: 0;
+        & a {
+          font-weight: 700;
+          font-size: $fs-base;
+          line-height: rem(18);
+          color: $base-color;
+          &:hover {
+            color: $white-color;
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.menu {
+  @include mq("desktop") {
+    position: relative;
+    background-color: transparent;
+    .header__navigation {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: rem(243);
+    }
+  }
+}
+//Navigation behaviour on various screens
+.header__description__wrapper {
+  padding: 6% 0 rem(400) 0;
+  flex-direction: column;
+  @include flex-center;
+  gap: rem(16);
+  .description__title {
+    font-family: $base-font;
+    font-weight: 700;
+    font-size: $fs-large-d;
+    color: $white-color;
+    @include mq("tablet") {
+      font-size: rem(72);
+    }
+    @include mq("desktop") {
+      font-size: rem(82);
+    }
+  }
+  .description__paragraph {
+    font-family: $base-font;
+    font-weight: 400;
+    font-size: rem(18);
+    line-height: $fs-medium;
+    color: $base-color;
+    @include mq("tablet") {
+      font-size: $fs-medium;
+    }
+    @include mq("desktop") {
+      font-size: rem(30);
+    }
+  }
+  .description__software {
+    font-family: $base-font;
+    font-weight: 400;
+    font-size: $fs-secondary;
+    text-transform: uppercase;
+    color: $light-grey-color;
+  }
+  @include mq("desktop") {
+    font-size: $fs-base;
+  }
+}

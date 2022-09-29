@@ -1,0 +1,12 @@
+@import "abstracts/mixins";
+@import "abstracts/reset";
+@import "abstracts/globals";
+@import "abstracts/variables";
+@import "components/editor";
+@import "./src/scss/components/header";
+@import "./src/scss/components/testimonials";
+@import "components/pricing";
+.body {
+  font-family: $base-font;
+  font-family: $secondary-font;
+}

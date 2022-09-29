@@ -1,0 +1,113 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/globals";
+
+.testimonials {
+  background-image: url("/dist/img/testimonials-bg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 15% rem(10) 2% rem(10);
+  & > * {
+    @include flex-center;
+    flex-direction: column;
+  }
+  &__title {
+    font-family: $base-font;
+    font-weight: 700;
+    font-size: rem(36);
+    line-height: rem(48);
+    color: $white-color;
+    @include mq("tablet") {
+      font-size: rem(42);
+    }
+  }
+  &__wrapper {
+    padding: 12% 0 10%;
+    gap: rem(50);
+    @include mq("phone-wide") {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      &__card {
+        flex-direction: column;
+        flex-basis: 35%;
+        flex-grow: 1;
+        @include flex-center;
+      }
+    }
+    @include mq("tablet_s") {
+      &__card {
+        flex-basis: 25%;
+        @include flex-center;
+      }
+    }
+    &__card {
+      margin-bottom: 8%;
+    }
+    &__card__logo {
+      margin-bottom: 8%;
+      object-fit: contain;
+    }
+    &__card__review {
+      font-family: $secondary-font;
+      font-style: italic;
+      font-weight: 700;
+      font-size: $fs-base;
+      line-height: $fs-medium;
+      color: $white-color;
+    }
+  }
+  &__description {
+    font-family: $secondary-font;
+    font-size: $fs-secondary;
+    line-height: $fs-large-t;
+    color: $light-purple-color;
+  }
+  &__delimiter {
+    margin: 9% 0 0;
+    width: 70%;
+    height: rem(2);
+    background: $lavender-color;
+  }
+}
+.testimonials__wrapper {
+  &__card {
+    &:first-child {
+      .testimonials__wrapper__card__logo {
+        height: rem(43);
+        width: rem(165);
+      }
+    }
+    &:nth-child(2) {
+      .testimonials__wrapper__card__logo {
+        height: rem(50);
+        width: rem(148);
+      }
+    }
+    &:nth-child(3) {
+      .testimonials__wrapper__card__logo {
+        height: 4rem;
+        width: 4rem;
+      }
+    }
+    &:nth-child(4) {
+      .testimonials__wrapper__card__logo {
+        height: rem(24);
+        width: rem(225);
+      }
+    }
+    &:nth-child(5) {
+      .testimonials__wrapper__card__logo {
+        height: rem(34);
+        width: rem(166);
+      }
+    }
+    &:last-child {
+      .testimonials__wrapper__card__logo {
+        height: rem(34);
+        width: rem(108);
+      }
+    }
+  }
+}
